@@ -1,0 +1,67 @@
+# Round 1B Configuration
+system:
+  name: "Round1B Persona Document Intelligence"
+  version: "1.0.0"
+  max_processing_time: 60  # seconds
+  max_model_size_mb: 1000
+
+# Processing parameters
+processing:
+  chunk_size: 512
+  chunk_overlap: 128
+  top_k_sections: 10
+  top_k_subsections: 15
+  similarity_threshold: 0.3
+  max_sections_per_doc: 5
+
+# Model configurations
+models:
+  embedding:
+    name: "all-MiniLM-L6-v2"
+    dimensions: 384
+    batch_size: 32
+  
+  spacy:
+    model: "en_core_web_sm"
+    disable_pipes: ["parser", "ner"]
+  
+  llm:
+    name: "llama-3.2-1b-q4.gguf"
+    optional: true
+    max_tokens: 512
+
+# Persona processing
+persona:
+  experience_levels:
+    - beginner
+    - intermediate
+    - advanced
+    - expert
+  
+  domains:
+    - academic
+    - business
+    - technical
+    - medical
+    - legal
+    - general
+
+# Quality thresholds
+quality:
+  min_section_confidence: 0.3
+  min_subsection_relevance: 0.2
+  min_chunk_size_words: 5
+  max_chunk_size_words: 600
+
+# Performance monitoring
+monitoring:
+  log_level: "INFO"
+  enable_performance_tracking: true
+  memory_limit_mb: 16000
+  cpu_count: 8
+
+# Cache settings
+cache:
+  enable_embedding_cache: true
+  enable_structure_cache: true
+  cache_cleanup_interval: 3600  # seconds

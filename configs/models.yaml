@@ -1,0 +1,46 @@
+# Model specifications and paths
+models:
+  embeddings:
+    all-MiniLM-L6-v2:
+      path: "models/embeddings/sentence-transformer/all-MiniLM-L6-v2"
+      size_mb: 23
+      dimensions: 384
+      max_seq_length: 256
+      download_url: "sentence-transformers/all-MiniLM-L6-v2"
+
+  spacy:
+    en_core_web_sm:
+      path: "models/nlp/en_core_web_sm"
+      size_mb: 15
+      version: "3.7.0"
+      download_command: "python -m spacy download en_core_web_sm"
+
+  llm:
+    llama-3.2-1b-q4:
+      path: "models/llm/llama-3.2-1b-q4.gguf"
+      size_mb: 700
+      quantization: "q4_0"
+      context_length: 4096
+      optional: true
+
+# NLTK data requirements
+nltk_data:
+  required_packages:
+    - punkt
+    - stopwords
+    - wordnet
+    - averaged_perceptron_tagger
+    - vader_lexicon
+  download_path: "models/nlp/nltk_data"
+
+# Model loading priorities
+loading:
+  essential_models:
+    - embeddings.all-MiniLM-L6-v2
+    - spacy.en_core_web_sm
+  
+  optional_models:
+    - llm.llama-3.2-1b-q4
+  
+  fallback_enabled: true
+  retry_attempts: 3

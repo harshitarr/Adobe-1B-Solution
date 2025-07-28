@@ -1,0 +1,7 @@
+{
+  "task_description": "Prepare a comprehensive literature review focusing on methodologies, datasets, and performance benchmarks",
+  "expected_outcomes": ["methodology comparison", "benchmark analysis"],
+  "priority_keywords": ["graph neural networks", "drug discovery", "benchmarks"],
+  "context": "Academic research review",
+  "urgency": "high"
+}
